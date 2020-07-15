@@ -4,31 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <title>v-for</title>
 </head>
 <body>
 <h1>v-for</h1>
 <hr>
 <div id="app">
-  <div v-for="item in items">
+  <p>输出一个数组</p>
+  <div v-for="item in sortItems">
     {{item}}
+  </div>
+  <hr>
+  <p>输出对象</p>
+  <div v-for="student in sortStudent">
+    {{student.name}}---{{student.age}}
+
   </div>
 
 
 </div>
 
 <script type="text/javascript">
-	var vm = new Vue({
-		el:'#app',
-		data: function(){
-			return{
-        items:[12,23,67,78,45,34,23,12]
-			}
-		},
-		methods:{
+  var vm = new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        items: [12, 23, 6, 78, 45, 34, 24, 13],
+        students: [
+          {name: 'jspang', age: 32},
+          {name: 'Panda', age: 30},
+          {name: 'PanPaN', age: 21},
+          {name: 'King', age: 45}
+        ],
+      }
+    },
+    methods: {},
+    computed: {
+      sortItems: function () {
+        // 此处有两个坑
+        // 1、对items进行排序，在上面不能用items作为参数传入，而要用自己定义的参数
+        // 2、用vue的sort有的毛病排序有问题，需要自己写function传入sort中排序
+        return this.items.sort(sortNumber);
+      },
+      sortStudent: function () {
+        return sortByKey(this.students,'age')
+      }
+    },
+  })
 
-		}
-	})
+  function sortNumber(a, b) {
+    return a - b;
+  }
+  // 更具age排序
+  function sortByKey(array, key) {
+    return array.sort(function (a, b) {
+      var x = a[key]
+      var y = b[key]
+      return ((x < y) ? -1 : (x > y) ? 1 : 0)
+    })
+  }
 </script>
 </body>
 </html>

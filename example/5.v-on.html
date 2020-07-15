@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--  <script type="text/javascript" src="../assets/javascript/vue.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>v-on</title>
+</head>
+<body>
+<h1>v-on</h1>
+<hr>
+<div id="app">
+  <span>得分：</span>
+  <span v-text="count"></span>
+  <input type="text" @keyup.enter="onEnter" v-model="secondCount">
+  <div style="margin-top: 10px">
+    <button @click="jiafen">加分</button>
+    <button @click="jianfen">减分</button>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var vm = new Vue({
+    el:'#app',
+    data: function(){
+      return{
+        count: 1,
+        secondCount:''
+      }
+    },
+    methods:{
+      jiafen:function () {
+        this.count++;
+      },
+      jianfen:function () {
+        this.count--;
+      },
+      onEnter:function () {
+        this.count = this.count+parseInt(this.secondCount);
+        this.secondCount = 0
+
+      }
+    }
+  })
+</script>
+</body>
+</html>

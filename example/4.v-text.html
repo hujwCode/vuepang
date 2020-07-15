@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>v-text</title>
+</head>
+<body>
+<h1>v-text</h1>
+<hr>
+<div id="app">
+  <div v-text="message">
+  </div>
+  <div v-html="msgHtml">
+
+  </div>
+
+
+</div>
+
+<script type="text/javascript">
+  var vm = new Vue({
+    el:'#app',
+    data: function(){
+      return{
+        message:'this is message',
+        msgHtml:'<h1>带html的msg</h1>'
+      }
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

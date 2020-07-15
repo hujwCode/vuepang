@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+  <title>v-if&v-else&v-show</title>
+</head>
+<body>
+<h1>v-if&v-else&v-show</h1>
+<hr>
+<div id="app">
+  <div id="">
+    <div v-if="isLogin">登录</div>
+    <div v-else>未登录</div>
+  </div>
+
+  <div v-show="isLogin">show</div>
+
+</div>
+
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#app',
+		data: function(){
+			return{
+				isLogin:false
+			}
+		},
+		methods:{
+
+		}
+	})
+</script>
+</body>
+</html>

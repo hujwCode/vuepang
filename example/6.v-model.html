@@ -3,29 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--  <script type="text/javascript" src="../assets/javascript/vue.js"></script>-->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+  <!--  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
   <title>v-model</title>
 </head>
 <body>
 <h1>v-model</h1>
 <hr>
 <div id="app">
-  
+  <p>原始文本信息：{{message}}</p>
+  <h3>文本框</h3>
+  <p>v-model:<input type="text" v-model="message"></p>
+
+  <hr>
+  <p>原始文本信息(.lazy)：{{messageLazy}}</p>
+  <!-- 这是懒加载，在鼠标失去焦点的时候，显示信息 -->
+  <p>v-model:<input type="text" v-model.lazy="messageLazy"></p>
+
+  <hr>
+  <p>原始文本信息(.number)：{{messageNumber}}</p>
+  <!-- 输入框只能是数字，但是如果第一个是字符串，那么它就认为输入框内都是字符串 -->
+  <p>v-model:<input type="text" v-model.number="messageNumber"></p>
+
+  <hr>
+  <p>原始文本信息(.trim)：{{messageTrim}}</p>
+  <!-- trim会把输入框内的字符串左右两边的空格消除掉 -->
+  <p>v-model:<input type="text" v-model.trim="messageTrim"></p>
+
+  <hr>
+  <h3>文本域</h3>
+  <textarea name="" id="" cols="30" rows="10" v-model="messageArea"></textarea>
+
+  <hr>
+  <h3>多选按钮绑定一个值</h3>
+  <!--这个label绑定按钮是显式的-->
+  <input type="checkbox" id="isTrue" v-model="isTrue1">
+  <label for='isTrue'>{{isTrue1}}</label>
+  <!--这个label绑定按钮是隐式的-->
+  <label> <input type="checkbox"  v-model="isTrue2">{{isTrue2}}</label>
+
+  <hr>
+  <h3>多选按钮绑定一组数组</h3>
+  <p>
+    <input type="checkbox" id="java" value="java" v-model="languages">
+    <label for="java">java</label>
+    <input type="checkbox" id="c" value="c" v-model="languages">
+    <label for="c">c</label>
+    <input type="checkbox" id="c++" value="c++" v-model="languages">
+    <label for="c++">c++</label>
+    <span>{{languages}}</span>
+  </p>
+
+  <hr>
+  <h3>单选按钮绑定</h3>
+  <p>
+    <input type="radio" id="male" value="male" v-model="sex">
+    <label for="male">男</label>
+    <input type="radio" id="female" value="female" v-model="sex">
+    <label for="female">女</label>
+    <span>{{sex}}</span>
+  </p>
 </div>
 
 <script type="text/javascript">
-  var vm = new Vue({
-    el:'#app',
-    data: function(){
-      return{
+	var vm = new Vue({
+		el: '#app',
+		data: function () {
+			return {
+				message: 'hello',
+				messageLazy: 'messageLazy',
+				messageNumber:null,
+        messageTrim:'',
+				messageArea:'messageArea',
+        isTrue1:true,
+				isTrue2:true,
+				languages:[],
+        sex:'',
+			}
+		},
+		methods: {},
 
-      }
-    },
-    methods:{
 
-    }
-  })
+	})
 </script>
 </body>
 </html>

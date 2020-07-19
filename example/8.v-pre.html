@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+  <title>Title</title>
+</head>
+<body>
+<h1>v-pre & v-cloak & v-once实例</h1>
+<hr>
+<div id="app">
+<!--  v-pre 不进行渲染输出-->
+  <div v-pre>{{message}}</div>
+  <hr>
+
+  <div v-cloak>{{message}}</div>
+  <input type="text" v-model="message">
+  <hr>
+  <div v-once>{{message}}</div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+  var vm = new Vue({
+    el: '#app',
+    data: function () {
+      return{
+        message: '11111'
+      }
+    },
+    methods: {
+
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+  <title>vuejs</title>
+</head>
+<body>
+<h1>Vue.directive</h1>
+<hr>
+<div id="app">
+  <p v-text="message"></p>
+  <hr>
+  <div v-hujw="color">{{num}}</div>
+  <input type="button" @click="add()" value="add">
+  <button onclick="unbind()">unbind</button>
+</div>
+
+<script type="text/javascript">
+  // 解绑
+  function unbind(){
+    console.log(11)
+    app.$destroy();
+  }
+  Vue.directive('hujw',{
+    // 被绑定
+    bind: function () {
+      console.log('1 - bind')
+    },
+    // 绑定到节点
+    inserted: function () {
+      console.log('2 - inserted')
+    },
+    // 组件更新
+    update: function () {
+      console.log('3 - update')
+    },
+    // 组件更新完成
+    componentUpdated: function () {
+      console.log('4 - componentUpdated')
+    },
+    unbind: function () {
+      console.log('5 - unbind')
+    }
+
+  })
+  var vm = new Vue({
+    el:'#app',
+    data: function(){
+      return{
+        message:'this is messages',
+        num: 10,
+        color: 'green'
+      }
+    },
+    methods:{
+      add: function () {
+        this.num++;
+      },
+
+    }
+  })
+</script>
+</body>
+</html>

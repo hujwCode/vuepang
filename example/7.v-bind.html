@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+
   <title>vuejs</title>
 </head>
 <body>
@@ -11,7 +12,16 @@
 <hr>
 <div id="app">
   <p v-text="message"></p>
-
+  <hr>
+  <a :href="url">baidu</a>
+  <hr>
+  <div :class="classList">class1 content</div>
+  <div :class="{class2:isTrue}">class2 content</div>
+  <hr>
+  <div>
+    <input type="checkbox" id="isTrue" v-model="isTrue"/>
+    <label for="isTrue">isTrue={{isTrue}}</label>
+  </div>
 </div>
 
 <script type="text/javascript">
@@ -19,7 +29,10 @@
 		el:'#app',
 		data: function(){
 			return{
-				message:'this is messages'
+				message:'this is messages',
+        url: 'http://www.baidu.com',
+        classList:['class1'],
+        isTrue: true,
 			}
 		},
 		methods:{
@@ -29,3 +42,12 @@
 </script>
 </body>
 </html>
+<style lang="less">
+
+  .class1 {
+    color: green;
+  }
+  .class2 {
+    font-size: large;
+  }
+</style>

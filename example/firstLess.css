@@ -1,0 +1,60 @@
+#head1 {
+  width: 10px;
+  height: 20px;
+  background: red;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+#warp {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  border: 1px solid;
+  margin: 0 auto;
+}
+#warp .inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: pink;
+  height: 100px;
+  width: 100px;
+}
+#home {
+  color: blue;
+  width: 600px;
+  height: 500px;
+  border: outset;
+}
+#home #top {
+  border: outset;
+  width: 90%;
+}
+#home #center {
+  border: outset;
+  height: 300px;
+  width: 90%;
+}
+#home #center #left {
+  border: outset;
+  float: left;
+  width: 40%;
+}
+#home #center #right {
+  border: outset;
+  float: left;
+  width: 40%;
+}
+.a {
+  color: red;
+  text-decoration: none;
+}
+.a .aa:hover {
+  color: blue;
+  text-decoration: underline;
+}

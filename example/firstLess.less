@@ -1,0 +1,67 @@
+
+@width: 10px;
+@height: @width + 10px;
+
+#head1{
+    width: @width;
+    height: @height;
+    background:red;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+#warp{
+   position: relative;
+   width: 300px;
+   height: 400px;
+   border: 1px solid;
+   margin: 0 auto;
+   .inner{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: pink;
+        height: 100px;
+        width: 100px;
+    }
+}
+#home{
+    color : blue;
+    width : 600px;
+    height : 500px;
+    border:outset;
+    #top{
+         border:outset;
+         width : 90%;
+    }
+    #center{
+         border:outset;
+         height : 300px;
+         width : 90%;
+         #left{
+           border:outset;
+           float : left;
+   width : 40%;
+         }
+         #right{
+           border:outset;
+           float : left;
+   width : 40%;
+         }
+     }
+  }
+  .a {
+    color: red;
+    text-decoration: none;
+    .aa{
+        &:hover {// 有 & 时解析的是同一个元素或此元素的伪类，没有 & 解析是后代元素
+        color: blue;
+        text-decoration: underline;
+    }   
+   
+    }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+  <title>vuejs</title>
+</head>
+<body>
+<h1>Template3中写法</h1>
+<hr>
+<div id="app">
+  <p v-text="message"></p>
+
+</div>
+
+<template id="demo2">
+  <div>第二种模板</div>
+</template>
+<script type="x-template" id="demo3">
+  <h2 style="color:red">第三种模板</h2>
+</script>
+
+<script type="text/javascript">
+  var vm = new Vue({
+    el:'#app',
+    data: function(){
+      return{
+        message:'this is messages'
+      }
+    },
+    methods:{
+
+    },
+    // 这是第一种创建模板的方法
+    // templates: `
+    //   <h2 style="color: red">第一种模板</h2>
+    // `
+    // 第二种创建模板的方法
+    template: "#demo3"
+  })
+</script>
+</body>
+</html>

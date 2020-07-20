@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+  <title>vuejs</title>
+</head>
+<body>
+<h1>hello world</h1>
+<hr>
+<div id="app">
+  <p v-text="message"></p>
+  <green></green>
+  <deeppink :here="message"></deeppink>
+</div>
+<div id="app2">
+  <green ></green>
+</div>
+
+<script type="text/javascript">
+  // 注册全局组件
+  // 此处全局组件component是不加s的
+  Vue.component('green',{
+    template: `<h1 style="color: green">第一个全局组件</h1> `
+  })
+
+  var vm = new Vue({
+    el:'#app',
+    data: function(){
+      return{
+        message:'局部组件赋值'
+      }
+    },
+    methods:{},
+    // 此处局部组件components是加s的
+    components:{
+      "deeppink":{
+        template: `<h2 style="color: deeppink">{{here}}--第二个局部组件</h2>`,
+        // 局部组件赋值
+        // 此处写属性的时候不可以用`-`来进行分词，需要使用小驼峰来进行分词如`myHere`
+        props: ['here']
+      }
+    }
+  })
+  var vm2 = new Vue({
+    el:'#app2',
+
+  })
+</script>
+</body>
+</html>

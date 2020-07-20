@@ -7,21 +7,37 @@
   <title>vuejs</title>
 </head>
 <body>
-<h1>hello world</h1>
+<h1>vue.set</h1>
 <hr>
 <div id="app">
-  <p v-text="message"></p>
-
+<!--  <p v-text="message"></p>-->
+  <hr>
+  <div>{{count}}</div>
+  <div>
+    <ul>
+      <li v-for="item in array" :key="item.index">{{item}}</li>
+    </ul>
+  </div>
+  <button onclick="add()">add</button>
 </div>
 
 <script type="text/javascript">
+  function add() {
+    // Vue.set(outData,'count',2);
+    // vm.count++
+    // outData.count++
+    // 虚拟dom中只通过下标改变数组的时候，vue是检测不到的，无法用下面一行的方式，需要用Vue.set实现
+    // vm.array[1]='php'
+    Vue.set(vm.array,1,'pp');
+  }
+  var outData={
+    count: 1,
+    goods: 'car',
+    array: ['java','c++','python']
+  }
   var vm = new Vue({
     el:'#app',
-    data: function(){
-      return{
-        message:'this is messages'
-      }
-    },
+    data: outData,
     methods:{
 
     }

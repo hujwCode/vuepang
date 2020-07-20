@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+  <title>vuejs</title>
+</head>
+<body>
+<h1>hello world</h1>
+<hr>
+<div id="app">
+  <p v-text="message"></p>
+
+  // 它是Vue内置的标签,它的用途是可以动态绑定我们的组件,根据数据不同更换不同的组件
+  <component v-bind:is="who"></component>
+  <button @click="change">change</button>
+</div>
+
+<script type="text/javascript">
+  var component1 = {
+    template: `<div>this is component1</div>`
+  }
+  var component2 = {
+    template: `<div>this is component2</div>`
+  }
+  var component3 = {
+    template: `<div>this is component3</div>`
+  }
+
+  var vm = new Vue({
+    el:'#app',
+    data: function(){
+      return{
+        message:'this is messages',
+        who: 'component1'
+
+      }
+    },
+    methods:{
+      change(){
+        if (this.who == 'component1'){
+          this.who = 'component2'
+        }else if (this.who == 'component2'){
+          this.who = 'component3'
+        }else if (this.who == 'component3'){
+          this.who = 'component1'
+        }
+
+      }
+    },
+    components: {
+      "component1": component1,
+      "component2": component2,
+      "component3": component3,
+    }
+  })
+</script>
+</body>
+</html>

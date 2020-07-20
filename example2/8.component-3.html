@@ -12,19 +12,31 @@
 <div id="app">
   <p v-text="message"></p>
   <meet :meetme="me"></meet>
+  <panda :meet="meet"></panda>
 </div>
 
 <script type="text/javascript">
+  var city = {
+    template: `<div>this is city</div>`
+  }
+  var panda = {
+    template: `<div style="color: red">{{meet}} -- hiPanda<city></city></div>`,
+    props: ['meet'],
+    components:{"city":city}
+  }
+
   var vm = new Vue({
     el:'#app',
     data: function(){
       return{
         message:'this is messages',
-        me: '11111'
+        me: '11111',
+        meet: 'mmmmmmeeeetttt'
       }
     },
     methods:{},
     components: {
+      "panda": panda,
       "meet": {
         template: `<h1>{{meetme}}---this is h1</h1>`,
         props:['meetme']

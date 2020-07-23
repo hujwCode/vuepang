@@ -10,7 +10,7 @@
 <h1>hello world</h1>
 <hr>
 <div id="app">
-  <p>今日温度：{{temperature}}</p>
+  <p>今日温度：{{template}}</p>
   <p>穿衣建议：{{suggest}}</p>
   <p><button @click="up">升温</button></p>
   <p><button @click="down">降温</button></p>
@@ -18,21 +18,29 @@
 </div>
 
 <script type="text/javascript">
+  var addLog = {
+    updated: function () {
+      console.log("数据变化,变成了"+this.template)
+    }
+  }
   var vm = new Vue({
     el:'#app',
     data: function(){
       return{
-        temperature: 14,
+        template: 14,
         suggest: '夹克衫',
         wear:['夹克','短袖','衬衫']
       }
     },
     methods:{
       up() {
-        this.temperature++
+        this.template++
       },
       down() {
-        this.temperature--
+        this.template--
+      },
+      updated: function () {
+        console.log("数据变化,变成了"+this.template)
       }
 
     },
@@ -44,7 +52,8 @@
           this.suggest = this.wear[1]
         }
       }
-    }
+    },
+    mixins:[addLog]
   })
 </script>
 </body>

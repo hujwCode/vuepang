@@ -2,9 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+  <title>vuejs</title>
 </head>
 <body>
+<h1>hello world</h1>
+<hr>
+<div id="app">
+  <p>今日温度：{{temperature}}</p>
+  <p>穿衣建议：{{suggest}}</p>
+  <p><button @click="up">升温</button></p>
+  <p><button @click="down">降温</button></p>
 
+</div>
+
+<script type="text/javascript">
+  var vm = new Vue({
+    el:'#app',
+    data: function(){
+      return{
+        temperature: 14,
+        suggest: '夹克衫',
+        wear:['夹克','短袖','衬衫']
+      }
+    },
+    methods:{
+      up() {
+        this.temperature++
+      },
+      down() {
+        this.temperature--
+      }
+
+    },
+    watch: {
+      temperature: function (newVal,oldVal) {
+        if (newVal > 15){
+          this.suggest = this.wear[0]
+        } else {
+          this.suggest = this.wear[1]
+        }
+      }
+    }
+  })
+</script>
 </body>
 </html>

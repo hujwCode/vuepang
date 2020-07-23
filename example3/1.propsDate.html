@@ -7,24 +7,27 @@
   <title>vuejs</title>
 </head>
 <body>
-
-  <h1>拓展实例构造器</h1>
-  <hr>
+<h1>hello world</h1>
+<hr>
+<div id="app">
   <p v-text="message"></p>
-  <author></author>
 
+</div>
+<!--不经常使用-->
+<head-my></head-my>
 <script type="text/javascript">
-  var authorURL = Vue.extend({
-    template: "<p><a :href='authorURL'>{{authorName}}</a></p>",
+  var head_my = Vue.extend({
+    template: "<p>{{message}}--{{a}}</p>",
     data: function () {
       return{
-        authorName: '姓名',
-        authorURL: 'http://www.baidu.com'
+        message: 'i love you!'
       }
-    }
-  });
+    },
+    props: ['a']
 
-  new authorURL().$mount("author")
+
+  })
+  new head_my({propsData:{a:1}}).$mount('head-my');
 </script>
 </body>
 </html>

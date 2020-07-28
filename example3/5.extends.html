@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+  <title>vuejs</title>
+</head>
+<body>
+<h1>Mixins</h1>
+<hr>
+<div id="app">
+  <p v-html="message"></p>
+  <hr>
+  <p>{{num}}</p>
+  <button @click="add">增加</button>
+</div>
+
+<script type="text/javascript">
+  var extendsObj = {
+    updated: function () {
+      console.log('我是拓展的updated');
+    },
+    methods:{
+      add() {
+        console.log('我是拓展出来的方法')
+      }
+    }
+  }
+  var vm = new Vue({
+    el:'#app',
+    data: function(){
+      return{
+        message:'消息',
+        num: 1,
+      }
+    },
+    methods:{
+      add() {
+        console.log('我是原生的方法！ ')
+        this.num++;
+      },
+    },
+    updated: function () {
+      console.log("构造器里的updated的方法")
+    },
+    extends: extendsObj
+  })
+</script>
+</body>
+</html>

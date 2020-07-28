@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+  <script type="text/javascript" src="../assets/javascript/jquery-3.5.1.js"></script>
+  <title>vuejs</title>
+</head>
+<body>
+<h1>Mthods</h1>
+<hr>
+<div id="app">
+  <p v-text="message"></p>
+
+</div>
+
+<script type="text/javascript">
+  var vm = new Vue({
+    el:'#app',
+    data: function(){
+      return{
+        message:'this is messages'
+      }
+    },
+    mounted:function () {
+      $("#app").html('我是jquery');
+    },
+    methods:{
+      add:function () {
+        console.log("调用了构造器内部的ADD方法")
+      }
+    }
+  })
+  vm.add();
+</script>
+</body>
+</html>

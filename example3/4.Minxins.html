@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="../assets/javascript/vue.js"></script>
+  <title>vuejs</title>
+</head>
+<body>
+<h1>Mixins</h1>
+<hr>
+<div id="app">
+  <p v-html="message"></p>
+  <hr>
+  <p>{{num}}</p>
+  <button @click="add">增加</button>
+</div>
+
+<script type="text/javascript">
+  var addlog={
+    // updated 这是一个钩子函数，执行顺序是先执行钩子函数，再执行构造器里的函数
+    updated:function () {
+      console.log("数据发生了变化，变化成了"+ this.num + ".");
+    }
+  }
+  var vm = new Vue({
+    el:'#app',
+    data: function(){
+      return{
+        message:'<p>Mixins方法有两种使用途径:</p>' +
+          '<p>1、需要增加方法的时候，这时候需要用混入减少源代码的污染</p>' +
+          '<p>2、很多地方用到的公共的方法，用混入的方法可以减少代码量，实现代码重用</p>',
+        num: 1,
+      }
+    },
+    methods:{
+      add() {
+        this.num++;
+      },
+    },
+    updated: function () {
+      console.log("构造器里的updated的方法")
+    },
+    mixins:[addlog]
+  })
+</script>
+</body>
+</html>
